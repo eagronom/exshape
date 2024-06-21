@@ -19,7 +19,7 @@ defmodule Exshape do
   end
 
   def keep_file?({:zip_file, charlist, _, _, _, _}) do
-    filename = :binary.list_to_bin(charlist)
+    filename = IO.chardata_to_string(charlist)
     not String.starts_with?(filename, "__MACOSX") and not String.starts_with?(filename, ".")
   end
   def keep_file?(_), do: false
